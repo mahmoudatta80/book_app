@@ -4,14 +4,14 @@ import 'package:sqflite/sqflite.dart';
 
 class DbHelper{
 
-  static Database? database;
+  static Database? myDatabase;
 
   Future<Database?> createDatabase() async{
-    if(database != null) {
-      return database;
+    if(myDatabase != null) {
+      return myDatabase;
     }else {
       String path = join(await getDatabasesPath() , 'roadmap2.db');
-      Database myDatabase = await openDatabase(
+      myDatabase = await openDatabase(
           path,
           version: 1,
           onCreate: (db , v) {
